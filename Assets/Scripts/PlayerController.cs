@@ -6,7 +6,9 @@ using Photon.Realtime;
 
 public class PlayerController : MonoBehaviourPun
 {
-    public Transform attackpoint;
+    public bool faceRight;
+    public Transform attackPointRight;
+    public Transform attackPointLeft;
     public int damage;
     public float attackRange;
     public float attackDelay;
@@ -94,20 +96,37 @@ public class PlayerController : MonoBehaviourPun
     void Attack()
     {
         lastAttackTime = Time.time;
-        RaycastHit2D hit = Physics2D.Raycast(attackpoint.position, transform.forward, attackRange);
-        playerAnim.SetTrigger("Attack");
-        if(hit.collider !=null && hit.collider.gameObject.CompareTag("Enemy"))
+        if (faceRight)
         {
-            Enemy enemy = hit.collider.GetComponent<Enemy>();
+            RaycastHit2D hit = Physics2D.Raycast(attackPointRight.position, transform.forward, attackRange);
 
-            enemy.photonView.RPC("TakeDamage", RpcTarget.MasterClient, damage);
+            if (hit.collider != null && hit.collider.gameObject.CompareTag("Enemy"))
+            {
+                Enemy enemy = hit.collider.GetComponent<Enemy>();
+
+                enemy.photonView.RPC("TakeDamage", RpcTarget.MasterClient, damage);
+            }
         }
+        else
+        {
+            RaycastHit2D hit = Physics2D.Raycast(attackPointLeft.position, transform.forward, attackRange);
+
+            if (hit.collider != null && hit.collider.gameObject.CompareTag("Enemy"))
+            {
+                Enemy enemy = hit.collider.GetComponent<Enemy>();
+
+                enemy.photonView.RPC("TakeDamage", RpcTarget.MasterClient, damage);
+            }
+        }
+
+        playerAnim.SetTrigger("Attack");
     }
 
     [PunRPC]
     void FlipRight()
     {
         sr.flipX = false;
+        faceRight = true;
 
     }
 
@@ -115,6 +134,7 @@ public class PlayerController : MonoBehaviourPun
     void FlipLeft()
     {
         sr.flipX = true;
+        faceRight = false;
     }
 
     [PunRPC]
@@ -166,6 +186,7 @@ public class PlayerController : MonoBehaviourPun
         rig.isKinematic = false;
 
         headerInfo.photonView.RPC("UpdateHealthBar", RpcTarget.All, currentHP);
+        GameUI.instance.UpdateHpText(currentHP, maxHP);
     }
 
     [PunRPC]

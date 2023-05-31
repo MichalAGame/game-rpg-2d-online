@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 634587501951094179}
   - component: {fileID: 6730176006974363003}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player4
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,8 +150,8 @@ MonoBehaviour:
   sr: {fileID: 4961192434424182128}
   moveSpeed: 5
   gold: 0
-  currentHP: 15
-  maxHP: 15
+  currentHP: 5
+  maxHP: 5
   dead: 0
   headerInfo: {fileID: 3674214532921799785}
 --- !u!50 &4961192434424182142

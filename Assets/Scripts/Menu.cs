@@ -69,7 +69,12 @@ public class Menu : MonoBehaviourPunCallbacks,ILobbyCallbacks
 
     public void OnScreenRoomButton()
     {
-        SetScreen(createRoomScreen);
+        if (PhotonNetwork.NickName.Length < 2)
+        {
+            return;
+        }
+        else
+            SetScreen(createRoomScreen);
     }
 
     public void OnbackToMainScreen()
@@ -79,12 +84,22 @@ public class Menu : MonoBehaviourPunCallbacks,ILobbyCallbacks
 
     public void OnFindRoomButton()
     {
-        SetScreen(lobbyBrowserScreen);
+        if (PhotonNetwork.NickName.Length < 2)
+        {
+            return;
+        }
+        else
+        {
+            SetScreen(lobbyBrowserScreen);
+        }
     }
 
     public void OncreateButton(TMP_InputField roomNameInput)
     {
-        NetworkManager.instance.CreateRoom(roomNameInput.text);
+        if (roomNameInput.text.Length < 2)
+            return;
+        else
+            NetworkManager.instance.CreateRoom(roomNameInput.text);
     }
 
     public override void OnJoinedRoom()

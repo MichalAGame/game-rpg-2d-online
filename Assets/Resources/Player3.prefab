@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 634587501951094179}
   - component: {fileID: 6730176006974363003}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player3
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,7 +114,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: adc5bd523370fdb46bd1337e9c4a46a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3a574d38890e1454da99566b1e61155a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -140,7 +140,7 @@ MonoBehaviour:
   faceRight: 0
   attackPointRight: {fileID: 4961192433464330917}
   attackPointLeft: {fileID: 5332995668033580985}
-  damage: 1
+  damage: 3
   attackRange: 2
   attackDelay: 1
   lastAttackTime: 0
@@ -150,8 +150,8 @@ MonoBehaviour:
   sr: {fileID: 4961192434424182128}
   moveSpeed: 5
   gold: 0
-  currentHP: 15
-  maxHP: 15
+  currentHP: 7
+  maxHP: 5
   dead: 0
   headerInfo: {fileID: 3674214532921799785}
 --- !u!50 &4961192434424182142
@@ -191,7 +191,7 @@ BoxCollider2D:
   m_Offset: {x: -0.02605629, y: 0.23747718}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.342741, y: 0.16}
+    pivot: {x: 0.34, y: 0.16}
     oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -211,7 +211,7 @@ Animator:
   m_GameObject: {fileID: 4961192434424182138}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ff4bd16e3e78af48be6e42141a32e72, type: 2}
+  m_Controller: {fileID: 9100000, guid: 140c6e5858484e34bbe4b37b888559b0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
