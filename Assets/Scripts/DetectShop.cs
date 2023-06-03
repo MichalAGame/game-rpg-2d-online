@@ -21,11 +21,12 @@ public class DetectShop : MonoBehaviour
             {
                 shopUI.SetActive(true);
             }
-            else
-            {
-                shopUI.SetActive(false);
-            }
         }
+        else
+        {
+            shopUI.SetActive(false);
+        }
+        
     }
 
         private void OnTriggerStay2D(Collider2D other)

@@ -51,6 +51,8 @@ MonoBehaviour:
   - UpdateHealthBar
   - GetGold
   - Heal
+  - AddHealth
+  - BuyHealth
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
