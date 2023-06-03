@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Bullet
   - Enemy
-  - Ground
+  - Shop
   layers:
   - Default
   - TransparentFX
@@ -14,10 +13,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - background
+  - Player
+  - Enemy
+  - Detect Shop
   - 
   - 
   - 
