@@ -51,8 +51,12 @@ MonoBehaviour:
   - UpdateHealthBar
   - GetGold
   - Heal
+<<<<<<< Updated upstream
   - AddHealth
   - BuyHealth
+=======
+  - DestroyObject
+>>>>>>> Stashed changes
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
