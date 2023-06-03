@@ -4,8 +4,17 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
+public enum AttackType
+{
+    Warrior,
+    Magicer
+}
+
 public class PlayerController : MonoBehaviourPun
 {
+    public AttackType type;
+    public string magicRight;
+    public string magicLeft;
     public bool faceRight;
     public Transform attackPointRight;
     public Transform attackPointLeft;
@@ -90,7 +99,10 @@ public class PlayerController : MonoBehaviourPun
         Move();
 
         if (Input.GetMouseButtonDown(0) && Time.time - lastAttackTime > attackDelay)
-            Attack();
+            if (type == AttackType.Warrior)
+                Attack();
+            else if (type == AttackType.Magicer)
+                CastSpell();
     }
 
     private void Move()
@@ -118,6 +130,21 @@ public class PlayerController : MonoBehaviourPun
         {
             playerAnim.SetBool("Move", false);
         }
+    }
+
+    void CastSpell()
+    {
+        lastAttackTime = Time.time;
+
+        playerAnim.SetTrigger("Attack");
+    }
+
+    public void CastBall()
+    {
+        if (faceRight)
+            PhotonNetwork.Instantiate(magicRight, attackPointRight.transform.position, Quaternion.identity);
+        else
+            PhotonNetwork.Instantiate(magicLeft, attackPointLeft.transform.position, Quaternion.identity);
     }
 
     void Attack()
@@ -167,7 +194,13 @@ public class PlayerController : MonoBehaviourPun
     [PunRPC]
     public void TakeDamage(int damageAmount)
     {
-        currentHP -= damageAmount;
+        int damageValue = damageAmount - def;
+        if(damageValue < 1)
+        {
+            damageValue = 1;
+        }
+
+        currentHP -= damageValue;
         headerInfo.photonView.RPC("UpdateHealthBar", RpcTarget.All, currentHP);
 
 

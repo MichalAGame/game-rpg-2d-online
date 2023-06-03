@@ -1939,7 +1939,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1c0416013051a04d812513095069c74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  faceRight: 0
+  type: 0
+  magicRight: MagicRight
+  magicLeft: MagicLeft
+  faceRight: 1
   attackPointRight: {fileID: 4961192433464330917}
   attackPointLeft: {fileID: 5332995668033580985}
   damage: 1

@@ -53,7 +53,7 @@ public class PlayerSelector : MonoBehaviour
     public void ChangeBack()
     {
         playerModel[selectedCharacter].SetActive(false);
-        selectedCharacter++;
+        selectedCharacter--;
         if (selectedCharacter == -1)
             selectedCharacter = playerModel.Length -1;
         playerModel[selectedCharacter].SetActive(true);

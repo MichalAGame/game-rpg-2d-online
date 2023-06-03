@@ -6,6 +6,7 @@ using Photon.Pun;
 
 public class Enemy : MonoBehaviourPun
 {
+    public string death = "Death";
     public string enemyName;
     public float moveSpeed;
     public int currentHp;
@@ -147,6 +148,7 @@ public class Enemy : MonoBehaviourPun
 
     void Die()
     {
+        PhotonNetwork.Instantiate(death, transform.position, Quaternion.identity);
         if (objectTospawnOnDeath != string.Empty)
             PhotonNetwork.Instantiate(objectTospawnOnDeath, transform.position, Quaternion.identity);
 
