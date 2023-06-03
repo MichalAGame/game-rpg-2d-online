@@ -8,6 +8,10 @@ public class GameUI : MonoBehaviour
 {
     public TextMeshProUGUI goldText;
     public TextMeshProUGUI hpText;
+    public TextMeshProUGUI adText;
+    public TextMeshProUGUI dfText;
+    public TextMeshProUGUI spText;
+    
 
     public static GameUI instance;
 
@@ -25,5 +29,19 @@ public class GameUI : MonoBehaviour
     {
         hpText.text = "" + curHP + "/" +""+ maxHP;
     }
+
+    public void UpdateADText(int adAmount)
+    {
+        adText.text = "" + adAmount;
+    }
+    public void UpdateDFText(int dfAmount)
+    {
+        dfText.text = "" + dfAmount;
+    }
+    public void UpdateSPText(int spAmount)
+    {
+        spText.text = "" + spAmount;
+    }
+
 
 }

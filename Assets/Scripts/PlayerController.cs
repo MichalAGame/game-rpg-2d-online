@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviourPun
     public Transform attackPointRight;
     public Transform attackPointLeft;
     public int damage;
+    public int def;
     public float attackRange;
     public float attackDelay;
     public float lastAttackTime;
@@ -21,7 +22,7 @@ public class PlayerController : MonoBehaviourPun
     public Player photonPlayer;
     public SpriteRenderer sr;
     //public HeaderInfo headerInfo;
-    public float moveSpeed;
+    public int moveSpeed;
     public int gold;
     public int currentHP;
     public int maxHP;
@@ -44,7 +45,33 @@ public class PlayerController : MonoBehaviourPun
             gold = PlayerPrefs.GetInt("Gold");
         }
         GameUI.instance.UpdateGoldText(gold);
+
+        if (PlayerPrefs.HasKey("Attack"))
+        {
+            damage = PlayerPrefs.GetInt("Attack");
+        }
+        GameUI.instance.UpdateADText(damage);
+
+        if (PlayerPrefs.HasKey("Def"))
+        {
+            def = PlayerPrefs.GetInt("Def");
+        }
+        GameUI.instance.UpdateDFText(def);
+
+        if (PlayerPrefs.HasKey("Speed"))
+        {
+            moveSpeed = PlayerPrefs.GetInt("Speed");
+        }
+        GameUI.instance.UpdateSPText(moveSpeed);
+
+        if (PlayerPrefs.HasKey("MaxHP"))
+        {
+            maxHP = PlayerPrefs.GetInt("MaxHP");
+        }
         currentHP = maxHP;
+        GameUI.instance.UpdateHpText(currentHP, maxHP);
+        
+        
 
         if (player.IsLocal)
             me = this;
@@ -196,6 +223,73 @@ public class PlayerController : MonoBehaviourPun
         headerInfo.photonView.RPC("UpdateHealthBar", RpcTarget.All, currentHP);
         GameUI.instance.UpdateHpText(currentHP, maxHP);
     }
+
+    public void AddHealth(int amountToAdd)
+    {
+        maxHP += amountToAdd;
+        PlayerPrefs.SetInt("MaxHP", maxHP);
+
+        headerInfo.photonView.RPC("UpdateHealthBar", RpcTarget.All, currentHP);
+        GameUI.instance.UpdateHpText(currentHP, maxHP);
+    }
+
+    public void BuyHealth(int itemPrice)
+    {
+        if (gold >= itemPrice)
+        {
+            AddHealth(10);
+            PlayerPrefs.SetInt("Def", def);
+            gold -= itemPrice;
+            PlayerPrefs.SetInt("Gold", gold);
+            GameUI.instance.UpdateGoldText(gold);
+            
+        }
+
+    }
+
+    public void BuyDef(int itemPrice)
+    {
+        if (gold >= itemPrice)
+        {
+            def++;
+            PlayerPrefs.SetInt("Def", def);
+            gold -= itemPrice;
+            PlayerPrefs.SetInt("Gold", gold);
+            GameUI.instance.UpdateGoldText(gold);
+            GameUI.instance.UpdateDFText(def);
+        }
+
+    }
+
+    public void BuyAttack(int itemPrice)
+    {
+        if (gold >= itemPrice)
+        {
+            damage++;
+            PlayerPrefs.SetInt("Attack", damage);
+            gold -= itemPrice;
+            PlayerPrefs.SetInt("Gold", gold);
+            GameUI.instance.UpdateGoldText(gold);
+            GameUI.instance.UpdateADText(damage);
+        }
+
+    }
+
+    public void BuySpeed(int itemPrice)
+    {
+        if (gold >= itemPrice)
+        {
+            moveSpeed++;
+            PlayerPrefs.SetInt("Speed", moveSpeed);
+            gold -= itemPrice;
+            PlayerPrefs.SetInt("Gold", gold);
+            GameUI.instance.UpdateGoldText(gold);
+            GameUI.instance.UpdateSPText(moveSpeed);
+        }
+
+    }
+
+
     [PunRPC]
     void GetGold( int goldToGive)
     {
