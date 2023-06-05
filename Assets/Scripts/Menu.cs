@@ -8,6 +8,8 @@ using Photon.Realtime;
 
 public class Menu : MonoBehaviourPunCallbacks,ILobbyCallbacks
 {
+    public string playerName;
+    public GameObject nameInput;
     [Header("Screnns")]
     public GameObject mainScreen;
     public GameObject createRoomScreen;
@@ -41,6 +43,18 @@ public class Menu : MonoBehaviourPunCallbacks,ILobbyCallbacks
             PhotonNetwork.CurrentRoom.IsVisible = true;
             PhotonNetwork.CurrentRoom.IsOpen = true;
         }
+        //Usuñ nazwê gracza
+        //PlayerPrefs.DeleteKey("Name");
+        if (PlayerPrefs.HasKey("Name"))
+        {
+            playerName = PlayerPrefs.GetString("Name");
+            PhotonNetwork.NickName = playerName;
+            nameInput.SetActive(false);
+        }
+        else
+        {
+            nameInput.SetActive(true);
+        }
     }
 
     public void SetScreen(GameObject screen)
@@ -58,7 +72,10 @@ public class Menu : MonoBehaviourPunCallbacks,ILobbyCallbacks
 
     public void OnPlayerNameChanged(TMP_InputField playerNameInput)
     {
-        PhotonNetwork.NickName = playerNameInput.text;
+        playerName = playerNameInput.text;
+
+        if (playerName.Length > 2)
+            PlayerPrefs.SetString("Name", playerName);
     }
 
     public override void OnConnectedToMaster()
@@ -69,7 +86,7 @@ public class Menu : MonoBehaviourPunCallbacks,ILobbyCallbacks
 
     public void OnScreenRoomButton()
     {
-        if (PhotonNetwork.NickName.Length < 2)
+        if (playerName.Length < 2)
         {
             return;
         }
@@ -84,7 +101,7 @@ public class Menu : MonoBehaviourPunCallbacks,ILobbyCallbacks
 
     public void OnFindRoomButton()
     {
-        if (PhotonNetwork.NickName.Length < 2)
+        if (playerName.Length < 2)
         {
             return;
         }
@@ -122,7 +139,7 @@ public class Menu : MonoBehaviourPunCallbacks,ILobbyCallbacks
         foreach (Player player in PhotonNetwork.PlayerList)
             playerListText.text += player.NickName + "\n";
 
-        roomInfoText.text = "<b>Room Name </b> \n" + PhotonNetwork.CurrentRoom.Name;
+        roomInfoText.text = "<b>Serwer </b> \n" + PhotonNetwork.CurrentRoom.Name;
     }
 
     public void OnstartGameButton()

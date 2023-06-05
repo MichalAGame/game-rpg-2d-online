@@ -347,14 +347,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   death: Death
   enemyName: Fire Knight
-  moveSpeed: 4
+  moveSpeed: 2
   currentHp: 10
   maxHp: 10
   chaseRange: 5
   attackRange: 2
   playerdetectRate: 0.5
   objectTospawnOnDeath: Coin
-  damage: 1
+  damage: 3
   attackrate: 1
   healthBar: {fileID: 1695001619556362048}
   sr: {fileID: 8073342324459538184}

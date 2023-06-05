@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  value: 1
+  value: 100
 --- !u!212 &7117564668598918823
 SpriteRenderer:
   m_ObjectHideFlags: 0
