@@ -174,6 +174,7 @@ public class PlayerController : MonoBehaviourPun
         }
 
         playerAnim.SetTrigger("Attack");
+        AudioManager.instance.PlaySFX(10);
     }
 
     [PunRPC]
@@ -229,6 +230,7 @@ public class PlayerController : MonoBehaviourPun
 
     void Die()
     {
+        AudioManager.instance.PlaySFX(6);
         dead = true;
         rig.isKinematic = true;
         transform.position = new Vector3(0, 90, 0);
@@ -255,6 +257,7 @@ public class PlayerController : MonoBehaviourPun
         currentHP = Mathf.Clamp(currentHP + amountToHeal, 0, maxHP);
         headerInfo.photonView.RPC("UpdateHealthBar", RpcTarget.All, currentHP);
         GameUI.instance.UpdateHpText(currentHP, maxHP);
+        AudioManager.instance.PlaySFX(3);
     }
 
     public void AddHealth(int amountToAdd)
@@ -270,6 +273,7 @@ public class PlayerController : MonoBehaviourPun
     {
         if (gold >= itemPrice)
         {
+            AudioManager.instance.PlaySFX(9);
             AddHealth(10);
             PlayerPrefs.SetInt("Def", def);
             gold -= itemPrice;
@@ -284,6 +288,7 @@ public class PlayerController : MonoBehaviourPun
     {
         if (gold >= itemPrice)
         {
+            AudioManager.instance.PlaySFX(9);
             def++;
             PlayerPrefs.SetInt("Def", def);
             gold -= itemPrice;
@@ -298,6 +303,7 @@ public class PlayerController : MonoBehaviourPun
     {
         if (gold >= itemPrice)
         {
+            AudioManager.instance.PlaySFX(9);
             damage++;
             PlayerPrefs.SetInt("Attack", damage);
             gold -= itemPrice;
@@ -312,6 +318,7 @@ public class PlayerController : MonoBehaviourPun
     {
         if (gold >= itemPrice)
         {
+            AudioManager.instance.PlaySFX(9);
             moveSpeed++;
             PlayerPrefs.SetInt("Speed", moveSpeed);
             gold -= itemPrice;
@@ -326,6 +333,7 @@ public class PlayerController : MonoBehaviourPun
     [PunRPC]
     void GetGold( int goldToGive)
     {
+        AudioManager.instance.PlaySFX(7);
         gold += goldToGive;
         PlayerPrefs.SetInt("Gold", gold);
         GameUI.instance.UpdateGoldText(gold);

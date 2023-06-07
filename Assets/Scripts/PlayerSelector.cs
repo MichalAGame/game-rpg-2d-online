@@ -63,6 +63,7 @@ public class PlayerSelector : MonoBehaviour
 
     public void ChangeNext()
     {
+        AudioManager.instance.PlaySFX(0);
         playerModel[selectedCharacter].SetActive(false);
         selectedCharacter++;
         if (selectedCharacter == playerModel.Length)
@@ -74,6 +75,7 @@ public class PlayerSelector : MonoBehaviour
     }
     public void ChangeBack()
     {
+        AudioManager.instance.PlaySFX(0);
         playerModel[selectedCharacter].SetActive(false);
         selectedCharacter--;
         if (selectedCharacter == -1)
@@ -92,6 +94,7 @@ public class PlayerSelector : MonoBehaviour
         selectButton.SetActive(false);
         mainScreen.SetActive(true);
         changeButton.SetActive(true);
+        AudioManager.instance.PlaySFX(3);
     }
 
     public void ChangeChar(int amount)
@@ -106,6 +109,7 @@ public class PlayerSelector : MonoBehaviour
             selectButton.SetActive(true);
             mainScreen.SetActive(false);
             changeButton.SetActive(false);
+            AudioManager.instance.PlaySFX(0);
         }
        
     }

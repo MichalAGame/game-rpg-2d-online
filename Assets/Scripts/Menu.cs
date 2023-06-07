@@ -76,6 +76,8 @@ public class Menu : MonoBehaviourPunCallbacks,ILobbyCallbacks
 
         if (playerName.Length > 2)
             PlayerPrefs.SetString("Name", playerName);
+        PhotonNetwork.NickName = playerName;
+        AudioManager.instance.PlaySFX(1);
     }
 
     public override void OnConnectedToMaster()
@@ -92,15 +94,18 @@ public class Menu : MonoBehaviourPunCallbacks,ILobbyCallbacks
         }
         else
             SetScreen(createRoomScreen);
+        AudioManager.instance.PlaySFX(1);
     }
 
     public void OnbackToMainScreen()
     {
         SetScreen(mainScreen);
+        AudioManager.instance.PlaySFX(1);
     }
 
     public void OnFindRoomButton()
     {
+        AudioManager.instance.PlaySFX(1);
         if (playerName.Length < 2)
         {
             return;
@@ -117,16 +122,19 @@ public class Menu : MonoBehaviourPunCallbacks,ILobbyCallbacks
             return;
         else
             NetworkManager.instance.CreateRoom(roomNameInput.text);
+        AudioManager.instance.PlaySFX(1);
     }
 
     public override void OnJoinedRoom()
     {
         SetScreen(lobbyScreen);
         photonView.RPC("UpdateLobbyUI", RpcTarget.All);
+        AudioManager.instance.PlaySFX(1);
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
+        AudioManager.instance.PlaySFX(1);
         UpdateLobbyUI();
     }
 
@@ -144,6 +152,7 @@ public class Menu : MonoBehaviourPunCallbacks,ILobbyCallbacks
 
     public void OnstartGameButton()
     {
+        AudioManager.instance.PlaySFX(1);
         PhotonNetwork.CurrentRoom.IsVisible = false;
         PhotonNetwork.CurrentRoom.IsOpen = false;
 
@@ -152,6 +161,7 @@ public class Menu : MonoBehaviourPunCallbacks,ILobbyCallbacks
 
     public void OnleaveLobbyButton()
     {
+        AudioManager.instance.PlaySFX(1);
         PhotonNetwork.LeaveRoom();
         SetScreen(mainScreen);
     }
@@ -188,11 +198,13 @@ public class Menu : MonoBehaviourPunCallbacks,ILobbyCallbacks
 
     public void OnRefreshButton()
     {
+        AudioManager.instance.PlaySFX(1);
         UpdateLobbyBroserUI();
     }
 
     public void OnJoinRoomButton(string roomName)
     {
+        AudioManager.instance.PlaySFX(1);
         NetworkManager.instance.JoinRoom(roomName);
     }
 

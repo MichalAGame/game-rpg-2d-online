@@ -1251,9 +1251,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1454419990514494424, guid: 29c3d1288760b3844a37beeabd68fb42, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1454419990514494426, guid: 29c3d1288760b3844a37beeabd68fb42, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1454419990979827877, guid: 29c3d1288760b3844a37beeabd68fb42, type: 3}
       propertyPath: m_SortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1454419990979827879, guid: 29c3d1288760b3844a37beeabd68fb42, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1454419991159180097, guid: 29c3d1288760b3844a37beeabd68fb42, type: 3}
       propertyPath: m_RootOrder
@@ -1305,7 +1317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1454419991832582559, guid: 29c3d1288760b3844a37beeabd68fb42, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29c3d1288760b3844a37beeabd68fb42, type: 3}
