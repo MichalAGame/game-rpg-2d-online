@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: {fileID: 7867425595629759562}
+  playerLevel: {fileID: 0}
   healthBar: {fileID: 3675416705788957136}
 --- !u!223 &5109426721222021159
 Canvas:
@@ -360,6 +361,7 @@ MonoBehaviour:
   sr: {fileID: 8073342324459538184}
   anim: {fileID: 8073342324459538182}
   rb: {fileID: 8073342324459538181}
+  xpToGive: 300
 --- !u!212 &8073342324459538184
 SpriteRenderer:
   m_ObjectHideFlags: 0

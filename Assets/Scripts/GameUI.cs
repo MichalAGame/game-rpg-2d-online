@@ -11,6 +11,7 @@ public class GameUI : MonoBehaviour
     public TextMeshProUGUI adText;
     public TextMeshProUGUI dfText;
     public TextMeshProUGUI spText;
+    public TextMeshProUGUI levelText;
     
 
     public static GameUI instance;
@@ -41,6 +42,10 @@ public class GameUI : MonoBehaviour
     public void UpdateSPText(int spAmount)
     {
         spText.text = "" + spAmount;
+    }
+    public void UpdateLevelText(int curXp, int maxXp)
+    {
+        levelText.text = "" + curXp + "/" + "" + maxXp;
     }
 
 

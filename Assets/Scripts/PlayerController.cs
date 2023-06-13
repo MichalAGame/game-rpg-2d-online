@@ -40,13 +40,17 @@ public class PlayerController : MonoBehaviourPun
     public static PlayerController me;
     public HeaderInformation headerInfo;
 
+    public int playerLevel = 1;
+    public int currentExp;
+    public int maxExp = 500;
+
     [PunRPC]
     public void Initialized(Player player)
     {
         id = player.ActorNumber;
         photonPlayer = player;
         GameManager.instance.players[id - 1] = this;
-        headerInfo.Initialized(player.NickName, maxHP);
+        headerInfo.InitializedPlayer(playerLevel,player.NickName, maxHP);
         GameUI.instance.UpdateHpText(currentHP, maxHP);
 
         if (PlayerPrefs.HasKey("Gold"))
@@ -79,8 +83,9 @@ public class PlayerController : MonoBehaviourPun
         }
         currentHP = maxHP;
         GameUI.instance.UpdateHpText(currentHP, maxHP);
-        
-        
+        GameUI.instance.UpdateLevelText(currentExp, maxExp);
+
+
 
         if (player.IsLocal)
             me = this;
@@ -337,5 +342,25 @@ public class PlayerController : MonoBehaviourPun
         gold += goldToGive;
         PlayerPrefs.SetInt("Gold", gold);
         GameUI.instance.UpdateGoldText(gold);
+    }
+
+    [PunRPC]
+    public void EarnExp(int xpAmount)
+    {
+        currentExp += xpAmount;
+        LevelUp();
+        GameUI.instance.UpdateLevelText(currentExp, maxExp);
+    }
+
+    public void LevelUp()
+    {
+        while(currentExp >= maxExp)
+        {
+            currentExp -= maxExp;
+            maxExp = (int)(maxExp * 1.2f);
+            playerLevel++;
+            headerInfo.photonView.RPC("UpdatePlayerLevel", RpcTarget.All, playerLevel);
+            GameUI.instance.UpdateLevelText(currentExp, maxExp);
+        }
     }
 }

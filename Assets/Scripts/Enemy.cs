@@ -7,6 +7,7 @@ using Photon.Pun;
 public class Enemy : MonoBehaviourPun
 {
     public string death = "Death";
+
     public string enemyName;
     public float moveSpeed;
     public int currentHp;
@@ -24,10 +25,11 @@ public class Enemy : MonoBehaviourPun
     public SpriteRenderer sr;
     public Animator anim;
     public Rigidbody2D rb;
+    public int xpToGive;
 
     private void Start()
     {
-        healthBar.Initialized(enemyName, maxHp);
+        healthBar.InitializedEnemy(enemyName, maxHp);
     }
 
     private void Update()
@@ -148,6 +150,7 @@ public class Enemy : MonoBehaviourPun
 
     void Die()
     {
+        targetPlayer.photonView.RPC("EarnExp", targetPlayer.photonPlayer, xpToGive);
         PhotonNetwork.Instantiate(death, transform.position, Quaternion.identity);
         if (objectTospawnOnDeath != string.Empty)
             PhotonNetwork.Instantiate(objectTospawnOnDeath, transform.position, Quaternion.identity);
