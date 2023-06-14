@@ -43,9 +43,9 @@ public class GameUI : MonoBehaviour
     {
         spText.text = "" + spAmount;
     }
-    public void UpdateLevelText(int curXp, int maxXp)
+    public void UpdateLevelText(float curXp,float maxXp)
     {
-        levelText.text = "" + curXp + "/" + "" + maxXp;
+        levelText.text = "" + (curXp / maxXp * 100).ToString("f1") + "%";
     }
 
 

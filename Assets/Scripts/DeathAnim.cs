@@ -5,10 +5,11 @@ using Photon.Pun;
 
 public class DeathAnim : MonoBehaviourPun
 {
+    public float destroyTime;
     
     void Start()
     {
-        Invoke("DestroyObject", 1);
+        Invoke("DestroyObject", destroyTime);
     }
 
     [PunRPC]

@@ -13,8 +13,10 @@ public enum AttackType
 public class PlayerController : MonoBehaviourPun
 {
     public AttackType type;
-    public string magicRight;
-    public string magicLeft;
+    public GameObject magicRight;
+    public GameObject magicLeft;
+    public int warriorId;
+    private bool isMine;
     public bool faceRight;
     public Transform attackPointRight;
     public Transform attackPointLeft;
@@ -43,6 +45,7 @@ public class PlayerController : MonoBehaviourPun
     public int playerLevel = 1;
     public int currentExp;
     public int maxExp = 500;
+    public string levelupEffect = "LevelEffect";
 
     [PunRPC]
     public void Initialized(Player player)
@@ -51,7 +54,24 @@ public class PlayerController : MonoBehaviourPun
         photonPlayer = player;
         GameManager.instance.players[id - 1] = this;
         headerInfo.InitializedPlayer(playerLevel,player.NickName, maxHP);
-        GameUI.instance.UpdateHpText(currentHP, maxHP);
+        
+
+        if (PlayerPrefs.HasKey("PlayerLevel"))
+        {
+            playerLevel = PlayerPrefs.GetInt("PlayerLevel");
+        }
+
+        if (PlayerPrefs.HasKey("CurrentEXP"))
+        {
+            currentExp = PlayerPrefs.GetInt("CurrentEXP");
+        }
+
+        if (PlayerPrefs.HasKey("MaxEXP"))
+        {
+            maxExp = PlayerPrefs.GetInt("MaxEXP");
+        }
+
+        headerInfo.InitializedPlayer(playerLevel, player.NickName, maxHP);
 
         if (PlayerPrefs.HasKey("Gold"))
         {
@@ -147,34 +167,47 @@ public class PlayerController : MonoBehaviourPun
     public void CastBall()
     {
         if (faceRight)
-            PhotonNetwork.Instantiate(magicRight, attackPointRight.transform.position, Quaternion.identity);
+        {
+            GameObject bulletObj = Instantiate(magicRight, attackPointRight.transform.position, Quaternion.identity);
+            MagicBall bulletScript = bulletObj.GetComponent<MagicBall>();
+            bulletScript.Initialized(id, photonView.IsMine);
+        }
         else
-            PhotonNetwork.Instantiate(magicLeft, attackPointLeft.transform.position, Quaternion.identity);
+        {
+            GameObject bulletObj = Instantiate(magicLeft, attackPointLeft.transform.position, Quaternion.identity);
+            MagicBall bulletScript = bulletObj.GetComponent<MagicBall>();
+            bulletScript.Initialized(id, photonView.IsMine);
+        }
+            
     }
-
+    void initializeAttack(int attackId, bool isMine)
+    {
+        this.warriorId = attackId;
+        this.isMine = isMine;
+    }
     void Attack()
     {
         lastAttackTime = Time.time;
         if (faceRight)
         {
             RaycastHit2D hit = Physics2D.Raycast(attackPointRight.position, transform.forward, attackRange);
-
-            if (hit.collider != null && hit.collider.gameObject.CompareTag("Enemy"))
+            initializeAttack(id, photonView.IsMine);
+            if (hit.collider != null && hit.collider.gameObject.CompareTag("Enemy") &&isMine)
             {
                 Enemy enemy = hit.collider.GetComponent<Enemy>();
 
-                enemy.photonView.RPC("TakeDamage", RpcTarget.MasterClient, damage);
+                enemy.photonView.RPC("TakeDamage", RpcTarget.MasterClient,this.warriorId, damage);
             }
         }
         else
         {
             RaycastHit2D hit = Physics2D.Raycast(attackPointLeft.position, transform.forward, attackRange);
 
-            if (hit.collider != null && hit.collider.gameObject.CompareTag("Enemy"))
+            if (hit.collider != null && hit.collider.gameObject.CompareTag("Enemy") && isMine)
             {
                 Enemy enemy = hit.collider.GetComponent<Enemy>();
 
-                enemy.photonView.RPC("TakeDamage", RpcTarget.MasterClient, damage);
+                enemy.photonView.RPC("TakeDamage", RpcTarget.MasterClient, this.warriorId, damage);
             }
         }
 
@@ -348,6 +381,7 @@ public class PlayerController : MonoBehaviourPun
     public void EarnExp(int xpAmount)
     {
         currentExp += xpAmount;
+        PlayerPrefs.SetInt("CurrentEXP", currentExp);
         LevelUp();
         GameUI.instance.UpdateLevelText(currentExp, maxExp);
     }
@@ -356,11 +390,21 @@ public class PlayerController : MonoBehaviourPun
     {
         while(currentExp >= maxExp)
         {
+            AudioManager.instance.PlaySFX(4);
+            PhotonNetwork.Instantiate(levelupEffect, transform.position, Quaternion.identity);
             currentExp -= maxExp;
             maxExp = (int)(maxExp * 1.2f);
             playerLevel++;
             headerInfo.photonView.RPC("UpdatePlayerLevel", RpcTarget.All, playerLevel);
             GameUI.instance.UpdateLevelText(currentExp, maxExp);
+            PlayerPrefs.SetInt("PlayerLevel", playerLevel);
+            PlayerPrefs.SetInt("CurrentEXP", currentExp);
+            PlayerPrefs.SetInt("MaxEXP", maxExp);
+            damage++;
+            PlayerPrefs.SetInt("Attack", damage);
+            GameUI.instance.UpdateADText(damage);
+            AddHealth(5);
+
         }
     }
 }

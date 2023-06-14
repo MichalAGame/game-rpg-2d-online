@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviourPun
     public Animator anim;
     public Rigidbody2D rb;
     public int xpToGive;
+    public int curAttackerID;
 
     private void Start()
     {
@@ -120,9 +121,10 @@ public class Enemy : MonoBehaviourPun
 
 
     [PunRPC]
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(int attackerId, int damageAmount)
     {
         currentHp -= damageAmount;
+        curAttackerID = attackerId;
         healthBar.photonView.RPC("UpdateHealthBar", RpcTarget.All, currentHp);
 
 
@@ -150,6 +152,8 @@ public class Enemy : MonoBehaviourPun
 
     void Die()
     {
+        PlayerController player = GameManager.instance.GetPlayer(curAttackerID);
+        GameManager.instance.GetPlayer(curAttackerID).photonView.RPC("EarnExp", player.photonPlayer, xpToGive);
         targetPlayer.photonView.RPC("EarnExp", targetPlayer.photonPlayer, xpToGive);
         PhotonNetwork.Instantiate(death, transform.position, Quaternion.identity);
         if (objectTospawnOnDeath != string.Empty)

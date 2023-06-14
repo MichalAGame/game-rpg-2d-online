@@ -1845,9 +1845,9 @@ GameObject:
   - component: {fileID: 4961192434424182142}
   - component: {fileID: 4961192434424182143}
   - component: {fileID: 4961192434424182140}
-  - component: {fileID: 4961192434424182141}
   - component: {fileID: 634587501951094179}
   - component: {fileID: 6730176006974363003}
+  - component: {fileID: 3409373364666348097}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -1940,13 +1940,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  magicRight: MagicRight
-  magicLeft: MagicLeft
+  magicRight: {fileID: 0}
+  magicLeft: {fileID: 0}
+  warriorId: 0
   faceRight: 1
   attackPointRight: {fileID: 4961192433464330917}
   attackPointLeft: {fileID: 5332995668033580985}
   damage: 1
-  def: 0
+  def: 2
   attackRange: 2
   attackDelay: 1
   lastAttackTime: 0
@@ -1963,6 +1964,7 @@ MonoBehaviour:
   playerLevel: 1
   currentExp: 0
   maxExp: 500
+  levelupEffect: LevelEffect
 --- !u!50 &4961192434424182142
 Rigidbody2D:
   serializedVersion: 4
@@ -2031,30 +2033,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4961192434424182141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4961192434424182138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents:
-  - {fileID: 634587501951094179}
-  - {fileID: 6730176006974363003}
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!114 &634587501951094179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2095,6 +2073,30 @@ MonoBehaviour:
   m_SynchronizeRotation: 0
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &3409373364666348097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4961192434424182138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 634587501951094179}
+  - {fileID: 6730176006974363003}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &5624705169813658649
 GameObject:
   m_ObjectHideFlags: 0
