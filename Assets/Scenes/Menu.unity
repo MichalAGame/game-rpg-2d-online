@@ -909,7 +909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291acb9443da28446bf99b6c56a030d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: Player2
+  playerName: Player1
 --- !u!1 &161091937
 GameObject:
   m_ObjectHideFlags: 0
@@ -1214,7 +1214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291acb9443da28446bf99b6c56a030d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: Player3
+  playerName: Player2
 --- !u!1 &194621744
 GameObject:
   m_ObjectHideFlags: 0
@@ -4043,7 +4043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291acb9443da28446bf99b6c56a030d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: Player4
+  playerName: Player3
 --- !u!1 &689806391
 GameObject:
   m_ObjectHideFlags: 0
@@ -6287,7 +6287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291acb9443da28446bf99b6c56a030d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: Player6
+  playerName: Player5
 --- !u!224 &1069189727
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6661,7 +6661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291acb9443da28446bf99b6c56a030d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: Player5
+  playerName: Player4
 --- !u!224 &1172909845
 RectTransform:
   m_ObjectHideFlags: 0
