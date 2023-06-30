@@ -1957,8 +1957,8 @@ MonoBehaviour:
   sr: {fileID: 4961192434424182128}
   moveSpeed: 3
   gold: 0
-  currentHP: 15
-  maxHP: 15
+  currentHP: 10
+  maxHP: 10
   dead: 0
   headerInfo: {fileID: 3674214532921799785}
   playerLevel: 1

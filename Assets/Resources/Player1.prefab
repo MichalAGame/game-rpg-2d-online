@@ -1940,12 +1940,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  magicRight: MagicRight
-  magicLeft: MagicLeft
+  magicRight: {fileID: 0}
+  magicLeft: {fileID: 0}
+  warriorId: 0
   faceRight: 1
   attackPointRight: {fileID: 4961192433464330917}
   attackPointLeft: {fileID: 5332995668033580985}
-  damage: 1
+  damage: 2
   def: 0
   attackRange: 2
   attackDelay: 1
@@ -1960,6 +1961,10 @@ MonoBehaviour:
   maxHP: 15
   dead: 0
   headerInfo: {fileID: 3674214532921799785}
+  playerLevel: 1
+  currentExp: 0
+  maxExp: 500
+  levelupEffect: LevelEffect
 --- !u!50 &4961192434424182142
 Rigidbody2D:
   serializedVersion: 4
@@ -2539,7 +2544,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6994080986325945745}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.445, y: 0.364, z: 0}
+  m_LocalPosition: {x: -0.508, y: 0.412, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3487,6 +3492,10 @@ PrefabInstance:
       propertyPath: playerName
       value: 
       objectReference: {fileID: 5212355533619347299}
+    - target: {fileID: 3125250805783945446, guid: dce576d087b27ed4697e1a9a5f179b0d, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5258452586084109297, guid: dce576d087b27ed4697e1a9a5f179b0d, type: 3}
       propertyPath: m_Name
       value: Player Name

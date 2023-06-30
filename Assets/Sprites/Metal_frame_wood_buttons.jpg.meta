@@ -1,0 +1,234 @@
+fileFormatVersion: 2
+guid: 0d91ca4ea54a2c7499f56ef1bc5f2a67
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 1534, y: 1614, z: 1582, w: 1534}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: 0
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Metal_frame_wood_buttons_0
+      rect:
+        serializedVersion: 2
+        x: 1582
+        y: 1611
+        width: 1002
+        height: 1004
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 348, y: -484.5}
+        - {x: 330, y: -486.5}
+        - {x: -327, y: -487.5}
+        - {x: -361, y: -482.5}
+        - {x: -385, y: -472.5}
+        - {x: -408, y: -460.5}
+        - {x: -425, y: -449.5}
+        - {x: -439, y: -437.5}
+        - {x: -450, y: -424.5}
+        - {x: -466, y: -404.5}
+        - {x: -475, y: -391.5}
+        - {x: -480, y: -378.5}
+        - {x: -487, y: -360.5}
+        - {x: -491, y: -334.5}
+        - {x: -492, y: 348.5}
+        - {x: -481, y: 378.5}
+        - {x: -466, y: 409.5}
+        - {x: -450, y: 432.5}
+        - {x: -424, y: 456.5}
+        - {x: -393, y: 475.5}
+        - {x: -349, y: 491.5}
+        - {x: 318, y: 492.5}
+        - {x: 361, y: 487.5}
+        - {x: 385, y: 477.5}
+        - {x: 410, y: 463.5}
+        - {x: 429, y: 447.5}
+        - {x: 450, y: 428.5}
+        - {x: 468, y: 398.5}
+        - {x: 478, y: 379.5}
+        - {x: 484, y: 355.5}
+        - {x: 487, y: 328.5}
+        - {x: 487, y: -334.5}
+        - {x: 478, y: -370.5}
+        - {x: 466, y: -397.5}
+        - {x: 450, y: -419.5}
+        - {x: 434, y: -437.5}
+        - {x: 411, y: -455.5}
+        - {x: 387, y: -470.5}
+        - {x: 366, y: -479.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c0bfee762596074780980e5280a7c25
+      internalID: 680819009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline:
+    - - {x: 450.5, y: -395.5}
+      - {x: 427.5, y: -416.5}
+      - {x: 394.5, y: -439.5}
+      - {x: 343.5, y: -455.5}
+      - {x: -351.5, y: -454.5}
+      - {x: -409.5, y: -432.5}
+      - {x: -447.5, y: -394.5}
+      - {x: -475.5, y: -350.5}
+      - {x: -489.5, y: -304.5}
+      - {x: -490.5, y: 380.5}
+      - {x: -480.5, y: 405.5}
+      - {x: -469.5, y: 431.5}
+      - {x: -442.5, y: 467.5}
+      - {x: -417.5, y: 491.5}
+      - {x: -391.5, y: 507.5}
+      - {x: -365.5, y: 517.5}
+      - {x: -332.5, y: 523.5}
+      - {x: 355.5, y: 521.5}
+      - {x: 405.5, y: 496.5}
+      - {x: 436.5, y: 473.5}
+      - {x: 460.5, y: 448.5}
+      - {x: 475.5, y: 420.5}
+      - {x: 489.5, y: 378.5}
+      - {x: 490.5, y: -271.5}
+      - {x: 488.5, y: -305.5}
+      - {x: 471.5, y: -360.5}
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Metal_frame_wood_buttons_0: 680819009
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

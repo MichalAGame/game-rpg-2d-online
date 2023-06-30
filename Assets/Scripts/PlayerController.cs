@@ -54,8 +54,15 @@ public class PlayerController : MonoBehaviourPun
         photonPlayer = player;
         GameManager.instance.players[id - 1] = this;
         headerInfo.InitializedPlayer(playerLevel,player.NickName, maxHP);
-        
 
+        /*PlayerPrefs.DeleteKey("PlayerLevel");
+        PlayerPrefs.DeleteKey("CurrentEXP");
+        PlayerPrefs.DeleteKey("Gold");
+        PlayerPrefs.DeleteKey("Attack");
+        PlayerPrefs.DeleteKey("Def");
+        PlayerPrefs.DeleteKey("Speed");
+        PlayerPrefs.DeleteKey("MaxHP");
+        */
         if (PlayerPrefs.HasKey("PlayerLevel"))
         {
             playerLevel = PlayerPrefs.GetInt("PlayerLevel");
@@ -313,7 +320,7 @@ public class PlayerController : MonoBehaviourPun
         {
             AudioManager.instance.PlaySFX(9);
             AddHealth(10);
-            PlayerPrefs.SetInt("Def", def);
+            PlayerPrefs.SetInt("Hp", maxHP);
             gold -= itemPrice;
             PlayerPrefs.SetInt("Gold", gold);
             GameUI.instance.UpdateGoldText(gold);
@@ -404,6 +411,7 @@ public class PlayerController : MonoBehaviourPun
             PlayerPrefs.SetInt("Attack", damage);
             GameUI.instance.UpdateADText(damage);
             AddHealth(5);
+            
 
         }
     }
